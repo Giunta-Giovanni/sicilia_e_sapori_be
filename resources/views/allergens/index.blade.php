@@ -1,4 +1,5 @@
 @extends('layouts.default')
+@section('title', "Allergeni")
 
 @section('content')
 <div class="container my-5">
