@@ -11,6 +11,12 @@
     {{-- identifichiamo il metodo put --}}
     @method('PUT')
 
+    {{-- titolo --}}
+    <div class="mb-3">
+        <label for="title" class="form-label">Titolo</label>
+        <input type="text" name="title" id="title" class="form-control" value={{$project->title}}   required>
+    </div>
+
 
 
 
