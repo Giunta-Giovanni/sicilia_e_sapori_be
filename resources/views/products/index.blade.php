@@ -1,14 +1,24 @@
 @extends('layouts.default')
+<?php
+session_start();
+?>
 
 @section('title','Prodotti')
 @section('content')
 <div class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="mb-0">Pagina Prodotti</h2>
-        <a href="{{ route('products.create') }}" class="btn btn-success btn-sm ms-auto">
-            <i class="bi bi-plus-lg"></i> Nuovo Prodotto
-        </a>
+        <div>
+            <a href="{{ route('products.create', ['type'=>'food'] )}}" class="btn btn-success btn-sm ms-auto">
+                <i class="bi bi-plus-lg"></i> Nuovo cibo
+            </a>
+            <a href="{{ route('products.create', ['type'=>'drink']) }}" class="btn btn-success btn-sm ms-auto">
+                <i class="bi bi-plus-lg"></i> Nuovo bevanda
+            </a>
+        </div>
+
     </div>
+    <span>Totale prodotti:{{count($products)}}</span>
 
     <div class="table-responsive">
         <table class="table table-bordered table-sm align-middle">

@@ -3,137 +3,155 @@
 @section('title', "Nuovo Prodotto")
 
 @section('content')
-
-<form action="{{ route('products.store') }}" method="POST" class="container mt-4 p-4 border rounded shadow-sm bg-light">
-    {{-- token di protezione che identifica che la chiamata post avvenga tramite un form del sito stesso --}}
+<form action="{{ route('products.store') }}" method="POST" class="container mt-4 p-4 border rounded shadow bg-white">
     @csrf
+    <input type="hidden" name="type" value="{{ $type }}">
 
-    {{-- identifichiamo il metodo put --}}
-    @method('PUT')
-
-    {{-- type - radio --}}
-    <div class="mb-3">
-        <p>Inserisci il tipo di prodotto che vuoi inserire</p>
-        {{-- food --}}
-        <input type="radio" name="type" value="food" id="is_food">
-        <label for="type" class="form-label">food</label>
-        {{-- beverage --}}
-        <input type="radio" name="type" value="drink" id="is_drink">
-        <label for="type" class="form-label">beverage</label>
-    </div>
-    {{-- categoria --}}
+    {{-- category --}}
     <div class="mb-3">
         <label for="category" class="form-label">Categoria</label>
-        <select name="category" id="category" class="form-select" required>
+        <select name="category_id" id="category" class="form-select"required>
             @foreach ($categories as $category)
-            <option value="{{$category->id}}">{{$category->name}}</option>
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
         </select>
     </div>
-    {{-- nome in italiano --}}
-    <div class="mb-3">
-        <label for="name_it" class="form-label">Nome in italiano</label>
-        <input type="text" name="name_it" id="name_it" required>
-    </div>
-    {{-- nome in inglese --}}
-    <div class="mb-3">
-        <label for="name_eng" class="form-label">Nome in inglese</label>
-        <input type="text" name="name_it" id="name_eng" required>
-    {{-- descrizione in italiano --}}
-    <div class="mb-3">
-        <label for="description_it" class="form-label">Descrizione in italiano</label>
-        <textarea name="description_it" id="description_it"></textarea>
-    </div>
-    {{-- descrizione in inglese --}}
-    <div class="mb-3">
-        <label for="description_eng" class="form-label">Descrizione in inglese</label>
-        <textarea name="description_eng" id="description_eng"></textarea>
-    </div>
-    {{-- prezzo primario --}}
-    <div class="mb-3">
-        <label for="primary_price" class="form-label">Prezzo standard</label>
-        <input type="text" name="primary_price" id="primary_price" required>
-        <span>€</span>
-    </div>
-    {{-- prezzo secondario --}}
-    <div class="mb-3">
-        <label for="secondary_price" class="form-label">Prezzo standard</label>
-        <input type="text" name="secondary_price" id="secondary_price">
-        <span>€</span>
-    </div>
-    
 
-
-    {{-- se è un prodotto food --}}
-    <div class="mb-3">
-        <p>Il prodotto contiene piccante?</p>
-        {{-- true --}}
-        <input type="radio" name="is_spicy" value="1">
-        <label for="is_spicy" class="form-label">Si</label>
-        {{-- false --}}
-        <input type="radio" name="is_spicy" value="0">
-        <label for="is_spicy" class="form-label">No</label>
-    </div>
-    <div class="mb-3">
-        <p>è un prodotto vegetariano?</p>
-        {{-- true --}}
-        <input type="radio" name="is_vegetarian" value="1">
-        <label for="is_vegetarian" class="form-label">Si</label>
-        {{-- false --}}
-        <input type="radio" name="is_vegetarian" value="0">
-        <label for="is_vegetarian" class="form-label">No</label>
+    {{-- name --}}
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="name_it" class="form-label">Nome (IT)</label>
+            <input type="text" name="name_it" id="name_it" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label for="name_eng" class="form-label">Nome (EN)</label>
+            <input type="text" name="name_eng" id="name_eng" class="form-control" required>
+        </div>
     </div>
 
-        {{-- se è un prodotto beverage --}}
+    {{-- description --}}
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="description_it" class="form-label">Descrizione (IT)</label>
+            <textarea name="description_it" id="description_it" class="form-control"></textarea>
+        </div>
+        <div class="col-md-6">
+            <label for="description_eng" class="form-label">Descrizione (EN)</label>
+            <textarea name="description_eng" id="description_eng" class="form-control"></textarea>
+        </div>
+    </div>
+
+    {{-- prices --}}
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="primary_price" class="form-label">Prezzo principale</label>
+            <div class="input-group mb-3">
+                <input type="text"name="primary_price" id="primary_price" class="form-control"  aria-label="inserisci il prezzo" required>
+                <span class="input-group-text">€</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="secondary_price" class="form-label">Prezzo secondario</label>
+            <div class="input-group mb-3">
+                <input type="text"name="secondary_price" id="secondary_price" class="form-control"  aria-label="inserisci il prezzo">
+                <span class="input-group-text">€</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    {{-- food specific fields --}}
+    @if ($type === 'food')
+        <div class="mb-3 row justify-content-center text-center">
+            <div class="col-sm-6 col-md-2 my-2">
+                <label class="form-label">È piccante?</label><br>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="is_spicy" value="1" id="spicy_yes" class="form-check-input">
+                    <label for="spicy_yes" class="form-check-label">Sì</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="is_spicy" value="0" id="spicy_no" class="form-check-input">
+                    <label for="spicy_no" class="form-check-label">No</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2 my-2">
+                <label class="form-label">È vegetariano?</label><br>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="is_vegetarian" value="1" id="vegetarian_yes" class="form-check-input">
+                    <label for="vegetarian_yes" class="form-check-label">Sì</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="is_vegetarian" value="0" id="vegetarian_no" class="form-check-input">
+                    <label for="vegetarian_no" class="form-check-label">No</label>
+                </div>
+            </div>
+            
+
+        </div>
+    @else
+        {{-- drink specific fields --}}
+
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label class="form-label">È alcolico?</label><br>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="is_alcholic" value="1" id="is_alcholic_yes" class="form-check-input">
+                    <label for="alcoholic_yes" class="form-check-label">Sì</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="is_alcholic" value="0" id="is_alcholic_no" class="form-check-input">
+                    <label for="alcoholic_no" class="form-check-label">No</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="alcohol_volume" class="form-label">Volume alcolico </label>
+                <div class="input-group mb-3">
+                    <input type="text"name="alcohol_volume" id="alcohol_volume" class="form-control"  aria-label="inserisci la percentuale alcolica" required>
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="primary_size" class="form-label">Formato principale</label>
+                <div class="input-group mb-3">
+                    <input type="text"name="primary_size" id="primary_size" class="form-control"  aria-label="inserisci la dimensione" required>
+                    <span class="input-group-text">cc</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="secondary_size" class="form-label">Formato secondario</label>
+                <div class="input-group mb-3">
+                    <input type="text"name="secondary_size" id="secondary_size" class="form-control"  aria-label="inserisci la dimensione" required>
+                    <span class="input-group-text">cc</span>
+                </div>
+            </div>
+        </div>
+    @endif
+    <hr>
+
+    {{-- allergens --}}
+    <h5 class="text-center">Allergeni</h5>
     <div class="mb-3">
-        <p>è una bevanda alcolica?</p>
-        {{-- true --}}
-        <input type="radio" name="is_alcholic" value="1">
-        <label for="is_alcholic" class="form-label">Si</label>
-        {{-- false --}}
-        <input type="radio" name="is_alcholic" value="0">
-        <label for="is_alcholic" class="form-label">No</label>
+        <div class="row">
+            @foreach ($allergens as $allergen)
+                <div class="col-md-3 col-sm-4">
+                    <div class="form-check">
+                        <input type="checkbox" name="allergens[]" value="{{ $allergen->id }}" id="allergen-{{ $allergen->id }}" class="form-check-input">
+                        <label for="allergen-{{ $allergen->id }}" class="form-check-label">
+                            {{ $allergen->name }}
+                        </label>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="alcohol_volume" class="form-label">Percentuale alcolica</label>
-        <input type="text" name="alcohol_volume" id="alcohol_volume">
-        <span>%</span>
+    <hr>
+
+    {{-- submit --}}
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">
+            Salva
+        </button>
     </div>
-    <div class="mb-3">
-        <label for="primary_size" class="form-label">Dimensioni normali</label>
-        <input type="text" name="primary_size" id="primary_size">
-        <span>cc</span>
-    </div>
-        <div class="mb-3">
-        <label for="primary_size" class="form-label">Dimensioni grandi</label>
-        <input type="text" name="primary_size" id="primary_size">
-        <span>cc</span>
-    </div>
-
-
-
-
-
-    {{-- allergeni --}}
-    <div>
-        @foreach ($allergens as $allergen)
-        <input 
-            type="checkbox"
-            name="allergens[]"
-            value="{{$allergen->id}}"
-            id="allergen-{{$allergen->id}}"
-            class="form-check-input"
-        >
-        <label
-            for="allergen-{{$allergen->id}}"
-            class="form-check-label"
-        >
-        {{$allergen->name}}
-        </label>
-        @endforeach
-        
-    </div>
-        
 </form>
-
 @endsection
