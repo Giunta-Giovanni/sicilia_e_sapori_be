@@ -26,6 +26,8 @@ session_start();
                 <tr>
                     <th>Categoria</th>
                     <th>Nome Prodotto</th>
+                    <th>prezzo</th>
+                    <th>prezzo 2</th>
                     <th>Azioni</th>
                 </tr>
             </thead>
@@ -34,11 +36,14 @@ session_start();
                     <tr>
                         <td>{{ $product->category->name }}</td>
                         <td>{{ $product->name_it }}</td>
+                        <td>{{$product->primary_price}}</td>
+                        <td>{{$product->secondary_price}}</td>
                         <td class="text-center">
                             <a href="{{ route('products.show', $product->id) }}" class="btn btn-outline-primary btn-sm px-3">
                                 Visualizza
                             </a>
                         </td>
+
                     </tr>
                 @endforeach
             </tbody>
