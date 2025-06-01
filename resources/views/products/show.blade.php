@@ -52,7 +52,7 @@
 
                 @if ($product->secondary_price)
                     <tr>
-                        <td><strong>Prezzo Maxi / Scrocchiarella</strong></td>
+                        <td><strong>{{$product->type === 'food'?'Prezzo Maxi / Scrocchiarella': 'Prezzo Secondario'}}</strong></td>
                         <td>{{ $product->secondary_price }} €</td>
                     </tr>
                 @endif
@@ -61,15 +61,15 @@
                     <td><strong>Categoria</strong></td>
                     <td>{{ $product->category->name }}</td>
                 </tr>
-                <tr>
-                    <td><strong>Allergeni</strong></td>
-                    <td>
-                    {{join(', ',$allergens)}}
-                        
-                    </td>
-                </tr>
- 
-
+                @if($allergens)
+                    <tr>
+                        <td><strong>Allergeni</strong></td>
+                        <td>
+                        {{join(', ',$allergens)}}
+                        </td>
+                    </tr>
+                @endif
+      
                 {{-- Info specifiche per tipo prodotto --}}
                 {{-- SE é UN CIBO  --}}
                 @if ($product->type === 'food')
@@ -145,24 +145,23 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina il Prodotto</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            Sei sicura di voler eliminare il Prodotto: {{$product->name_it}}
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-            
-            {{-- pulsante destroy --}}
-            <form action="{{route('products.destroy', $product)}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <input type="submit" class="btn btn-danger" value="Elimina Prodotto">
-            </form>
-    
-        </div>
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina il Prodotto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Sei sicura di voler eliminare il Prodotto: {{$product->name_it}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                
+                {{-- pulsante destroy --}}
+                <form action="{{route('products.destroy', $product)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" class="btn btn-danger" value="Elimina Prodotto">
+                </form>
+            </div>
         </div>
     </div>
 </div>
