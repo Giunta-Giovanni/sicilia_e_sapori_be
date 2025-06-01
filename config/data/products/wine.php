@@ -12,7 +12,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 13.0,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -26,7 +26,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 12.5,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -40,7 +40,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 12.5,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -54,7 +54,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 12.5,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -68,7 +68,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 12.5,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -82,7 +82,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 12.5,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -96,7 +96,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 12.5,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -110,7 +110,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 11.5,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -124,7 +124,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 12.0,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -138,7 +138,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 12.0,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -152,7 +152,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 12.0,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -166,7 +166,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 12.0,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -180,7 +180,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 13.5,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -194,7 +194,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 13.5,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -208,7 +208,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 13.5,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -222,7 +222,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => 1,
         'alcohol_volume' => 13.5,
-        'primary_size' => 750,
+        'primary_size' => 75,
         'secondary_size' => null,
         "type" => "drink"
     ]

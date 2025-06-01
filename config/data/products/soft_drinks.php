@@ -25,8 +25,8 @@ return [
         'secondary_price' => 2.50,
         'is_alcholic' => 0,
         'alcohol_volume' => 0,
-        'primary_size' => 500,
-        'secondary_size' => 1000,
+        'primary_size' => 50,
+        'secondary_size' => 100,
         "type" => "drink",
     ],
     [
@@ -39,8 +39,8 @@ return [
         'secondary_price' => 4.50,
         'is_alcholic' => 0,
         'alcohol_volume' => 0,
-        'primary_size' => 330,
-        'secondary_size' => 1000,
+        'primary_size' => 33,
+        'secondary_size' => 100,
         "type" => "drink",
     ],
     [
@@ -53,7 +53,7 @@ return [
         'secondary_price' => null,
         'is_alcholic' => 0,
         'alcohol_volume' => 0,
-        'primary_size' => 330,
+        'primary_size' => 33,
         'secondary_size' => 0,
         "type" => "drink"
     ],
@@ -67,7 +67,7 @@ return [
         'secondary_price' => null,
         'is_alcholic' => 0,
         'alcohol_volume' => 0,
-        'primary_size' => 330,
+        'primary_size' => 33,
         'secondary_size' => 0,
         "type" => "drink"
     ],

@@ -13,8 +13,8 @@ return [
         "secondary_price" => "5.00",
         'is_alcholic' => true,
         'alcohol_volume' => 5.5, // Typical alcohol volume for a blonde ale
-        'primary_size' => 200, // Assuming 200ml for the smaller price
-        'secondary_size' => 400, // Assuming 400ml for the larger price
+        'primary_size' => 20, // Assuming 20cl for the smaller price
+        'secondary_size' => 40, // Assuming 40cl for the larger price
         "type" => "drink"
     ],
     [
@@ -27,8 +27,8 @@ return [
         "secondary_price" => "6.00",
         'is_alcholic' => true,
         'alcohol_volume' => 6.5, // Typical alcohol volume for a red ale
-        'primary_size' => 200, // Assuming 200ml for the smaller price
-        'secondary_size' => 400, // Assuming 400ml for the larger price
+        'primary_size' => 20, // Assuming 20ml for the smaller price
+        'secondary_size' => 40, // Assuming 40ml for the larger price
         "type" => "drink"
     ],
     [
@@ -41,7 +41,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => true,
         'alcohol_volume' => 4.6, // Standard alcohol volume for Birra Moretti
-        'primary_size' => 660, // 66 cl = 660 ml
+        'primary_size' => 66, // 66 cl
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -55,7 +55,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => true,
         'alcohol_volume' => 4.7, // Typical alcohol volume for Semedorato (standard lager)
-        'primary_size' => 660, // 66 cl = 660 ml
+        'primary_size' => 66, // 66 cl 
         'secondary_size' => null,
         "type" => "drink"
     ],
@@ -69,7 +69,7 @@ return [
         "secondary_price" => null,
         'is_alcholic' => true,
         'alcohol_volume' => 5.0, // Common alcohol volume for craft beers if not specified
-        'primary_size' => 330, // 33 cl = 330 ml
+        'primary_size' => 33, // 33 cl
         'secondary_size' => null,
         "type" => "drink"
     ]
