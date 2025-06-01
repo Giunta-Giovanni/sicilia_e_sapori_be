@@ -77,8 +77,8 @@ class ProductsController extends Controller
 
                 // prezzi
                 'primary_price.required' => 'Il prezzo principale è obbligatorio.',
-                'primary_price.regex' => 'Il prezzo principale non è in un formato valido. Usa numeri come "12.50".',
-                'secondary_price.regex' => 'Il prezzo secondario non è in un formato valido. Usa numeri come "8.00".',
+                'primary_price.regex' => 'Il prezzo deve essere un numero minore di 100 (es. 12,50 o 12.50)',
+                'secondary_price.regex' => 'Il prezzo deve essere un numero minore di 100 (es. 12,50 o 12.50).',
 
                 // food
                 'is_spicy.required_if' => 'Indica se il piatto è piccante.',
