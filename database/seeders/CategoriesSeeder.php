@@ -19,7 +19,8 @@ class CategoriesSeeder extends Seeder
             // creiamo l'istanza
             $newCategory = new Category();
 
-            $newCategory->name = $category;
+            $newCategory->type = $category['type'];
+            $newCategory->name = $category['name'];
 
             // salviamo l'istanza  
             $newCategory->save();
