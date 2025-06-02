@@ -17,12 +17,12 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::orderby('name')->get();
+        $categories = Category::orderBy('name')->get();
 
-        // Se arriva il filtro 'category' dalla query string
-        if ($request->has('category')) {
-            $categoryId = $request->query('category');
-            // Filtra i prodotti per category_id
+        $categoryId = $request->query('category');
+
+        if ($categoryId) {
+            // Se c'è un filtro category e non è vuoto
             $products = Product::where('category_id', $categoryId)->get();
         } else {
             // Altrimenti prendi tutti i prodotti
