@@ -1,0 +1,46 @@
+.price {
+    width: 50px;
+}
+
+.logo {
+    width: 150px;
+}
+
+.logo-home {
+    width: 400px;
+}
+
+
+.login-btn {
+    border: 1px solid black;
+    border-radius: 33px;
+    padding: 1rem;
+    color: black;
+    text-decoration: none;
+    transition: ease-in-out 0.3s;
+}
+
+.login-btn:hover {
+    background-color: rgba(247, 246, 246, 0.682);
+
+}
+
+.empty-tab {
+    background-color: rgba(232, 230, 230, 0.871) !important;
+}
+
+.price {
+    text-align: right;
+    padding-right: 1rem;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
