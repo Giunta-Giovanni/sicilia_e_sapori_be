@@ -15,17 +15,21 @@ class ProductsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::orderby('category_id', 'asc')->get();
-        $foodProducts = Product::whereHas('category', function ($query) {
-            $query->where('type', 'food');
-        })->orderBy('category_id', 'asc')->get();
-        $beverageProducts = Product::whereHas('category', function ($query) {
-            $query->where('type', 'drink');
-        })->orderBy('category_id', 'asc')->get();
+        $categories = Category::orderby('name')->get();
 
-        return view('products.index', compact('products', 'foodProducts', 'beverageProducts'));
+        // Se arriva il filtro 'category' dalla query string
+        if ($request->has('category')) {
+            $categoryId = $request->query('category');
+            // Filtra i prodotti per category_id
+            $products = Product::where('category_id', $categoryId)->get();
+        } else {
+            // Altrimenti prendi tutti i prodotti
+            $products = Product::all();
+        }
+
+        return view('products.index', compact('categories', 'products'));
     }
 
     /**
