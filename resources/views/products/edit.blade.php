@@ -111,7 +111,7 @@
                     min="0"
                     name="primary_price"
                     id="primary_price"
-                    class="form-control"
+                    class="form-control price"
                     value="{{ old('primary_price', $product->primary_price) }}"
                     required>
                 <span class="input-group-text">€</span>
@@ -131,7 +131,7 @@
                     min="0"
                     name="secondary_price"
                     id="secondary_price"
-                    class="form-control"
+                    class="form-control price"
                     value="{{ old('secondary_price', $product->secondary_price ?? 0) }}">
                 <span class="input-group-text">€</span>
                 @error('secondary_price')
