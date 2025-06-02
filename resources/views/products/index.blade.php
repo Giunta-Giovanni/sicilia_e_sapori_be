@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <form action="" method="GET" class="w-100" style="max-width: 400px;">
+    <form action="" method="get" class="w-100" style="max-width: 400px;">
         <div class="input-group mb-3">
             <select class="form-select" name="category" id="category" style="border-top-left-radius: 0.375rem; border-bottom-left-radius: 0.375rem;">
                 <option value="">Tutte le categorie</option>
@@ -46,19 +46,17 @@
                 </tr>
             </thead>
             <tbody>
-  
                 @foreach ($products as $products)
                     <tr>
                         <td>{{ $products->category->name }}</td>
                         <td>{{ $products->name_it }}</td>
-                        <td>{{$products->primary_price}}</td>
-                        <td>{{$products->secondary_price}}</td>
+                        <td>{{$products->primary_price}} €</td>
+                        <td class="{{!$products->secondary_price?'empty-tab':''}}">{{$products->secondary_price?"$products->secondary_price €":''}}</td>
                         <td class="text-center">
                             <a href="{{ route('products.show', $products->id) }}" class="btn btn-outline-primary btn-sm px-3">
                                 Visualizza
                             </a>
                         </td>
-
                     </tr>
                 @endforeach
             </tbody>

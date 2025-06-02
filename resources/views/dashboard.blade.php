@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <h2 class="fs-4 text-secondary my-4">
-        {{ __('Dashboard') }}
+    <h2 class="text-center my-4">
+        {{ __('Zona di amministrazione di Sicilia e sapori') }}
     </h2>
     <div class="row justify-content-center">
         <div class="col">
@@ -17,7 +17,7 @@
                     </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Benvenuta, sei online') }}
                 </div>
             </div>
         </div>
