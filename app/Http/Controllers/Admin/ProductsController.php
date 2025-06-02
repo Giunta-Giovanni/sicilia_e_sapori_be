@@ -18,7 +18,14 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::orderby('category_id', 'asc')->get();
-        return view('products.index', compact('products'));
+        $foodProducts = Product::whereHas('category', function ($query) {
+            $query->where('type', 'food');
+        })->orderBy('category_id', 'asc')->get();
+        $beverageProducts = Product::whereHas('category', function ($query) {
+            $query->where('type', 'drink');
+        })->orderBy('category_id', 'asc')->get();
+
+        return view('products.index', compact('products', 'foodProducts', 'beverageProducts'));
     }
 
     /**
@@ -28,8 +35,8 @@ class ProductsController extends Controller
     {
         $type = $request->query('type');
         $products = Product::orderby('category_id', 'asc')->get();
-        $categories = Category::all();
-        $allergens = Allergen::all();
+        $categories = Category::orderby('name')->get();
+        $allergens = Allergen::orderby('name')->get();
 
 
         return view('products.create', compact('type', 'products', 'categories', 'allergens'));
@@ -170,8 +177,8 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Category::all();
-        $allergens = Allergen::all();
+        $categories = Category::orderby('name')->get();
+        $allergens = Allergen::orderby('name')->get();
 
         return view('products.edit', compact('product', 'categories', 'allergens'));
     }
@@ -222,8 +229,8 @@ class ProductsController extends Controller
 
                 // prezzi
                 'primary_price.required' => 'Il prezzo principale è obbligatorio.',
-                'primary_price.regex' => 'Il prezzo principale non è in un formato valido. Usa numeri come "12.50".',
-                'secondary_price.regex' => 'Il prezzo secondario non è in un formato valido. Usa numeri come "8.00".',
+                'primary_price.regex' => 'Il prezzo deve essere un numero minore di 100 (es. 12,50 o 12.50)',
+                'secondary_price.regex' => 'Il prezzo deve essere un numero minore di 100 (es. 12,50 o 12.50).',
 
                 // food
                 'is_spicy.required_if' => 'Indica se il piatto è piccante.',
@@ -302,8 +309,24 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+        // Cancella la relazione one-to-one se esiste
+        if ($product->beverage) {
+            $product->beverage->delete();
+        }
+
+        // Se vuoi cancellare anche il record food associato, decommenta questo:
+        if ($product->food) {
+            $product->food->delete();
+        }
+
+        // Stacca gli allergeni (relazione many-to-many)
+        $product->allergens()->detach();
+
+        // Infine, elimina il prodotto
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success', "Prodotto: $product->name_it eliminato con successo.");
     }
 }
