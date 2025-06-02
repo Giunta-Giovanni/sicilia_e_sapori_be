@@ -185,6 +185,18 @@ return [
     ],
     [
         "category_id" => $categoryId,
+        "name_it" => "Regina",
+        "name_eng" => "Queen",
+        "description_it" => "Pomodoro, mozzarella di bufala, olio extra vergine d'oliva, origano",
+        "description_eng" => "Tomato, buffalo mozzarella, extra virgin olive oil, oregano.",
+        "primary_price" => "7.00",
+        "secondary_price" => "17.00",
+        "is_spicy" => false,
+        "is_vegetarian" => true, // Non contiene carne o pesce
+        "type" => "food"
+    ],
+    [
+        "category_id" => $categoryId,
         "name_it" => "Bufala",
         "name_eng" => "Bufala",
         "description_it" => "Pomodoro, mozzarella di bufala, olio evo, origano.",
