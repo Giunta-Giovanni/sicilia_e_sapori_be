@@ -10,23 +10,22 @@
 2. Creare operazioni crud per i prodotti con anche allergeni categoria alimentare e specifiche in modo tabulato 
     - index √
     - show √
-    - create 
-    - modify 
-    - delete 
+    - create √
+    - modify √
+    - delete √
 3. creare operazioni crud per modificare le  categorie
     - index √
-    - show (non necessaria) x
-    - create 
-    - modify 
-    - delete 
+    - show x
+    - create x
+    - modify x
+    - delete x
 4. creare operazioni crud per modificare gli allegeni
     - index √
-    - show (non necessaria)x
-    - create 
-    - modify 
-    - delete 
+    - show x
+    - create x
+    - modify x
+    - deletex
 
 
 5. capire il problema dell'accesso iniziale
-
-
+6. gestire la possibilita di avere solo le categorie food o solo le categorie beverage all'interno del data

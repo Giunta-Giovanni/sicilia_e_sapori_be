@@ -3,6 +3,20 @@
 @section('title', "Nuovo Prodotto")
 
 @section('content')
+
+<?php
+
+    $foodCategories =[];
+    $beverageCategories = [];
+    foreach($categories as $category){
+    if($category->type === 'food'){
+        array_push($foodCategories, $category);
+    } else{
+         array_push($beverageCategories, $category);
+    }
+    }
+?>
+{{-- @dd($foodCategories) --}}
 <form action="{{ route('products.store') }}" method="POST" class="container mt-4 p-4 border rounded shadow bg-white">
     
     @csrf
@@ -12,9 +26,15 @@
     <div class="mb-3">
         <label for="category" class="form-label">Categoria*</label>
         <select name="category_id" id="category" class="form-select"required>
-            @foreach ($categories as $category)
-                <option value="{{ $category->id }}" {{ old('category_id') == $category->id?'selected':''}}>{{ $category->name }}</option>
-            @endforeach
+            @if($type === 'food')
+                @foreach ($foodCategories as $category)
+                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id?'selected':''}}>{{ $category->name }}</option>
+                @endforeach
+            @else
+                @foreach ($beverageCategories as $category)
+                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id?'selected':''}}>{{ $category->name }}</option>
+                @endforeach
+            @endif
         </select>
     </div>
 
