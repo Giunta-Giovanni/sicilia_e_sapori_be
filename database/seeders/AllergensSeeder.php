@@ -15,20 +15,20 @@ class AllergensSeeder extends Seeder
     public function run(): void
     {
         $allergens = [
-            "Glutine",
-            "Crostacei",
-            "Uova",
-            "Pesce",
-            "Arachidi",
-            "Soia",
-            "Latte",
-            "Frutta a guscio",
-            "Sedano",
-            "Senape",
-            "Semi di sesamo",
-            "Solfiti",
-            "Lupini",
-            "Molluschi"
+            "gluten",
+            "crustaceans",
+            "egg",
+            "fish",
+            "peanuts",
+            "soy",
+            "milk",
+            "nut",
+            "celery",
+            "mustard",
+            "sesame",
+            "sulphites",
+            "lupins",
+            "molluscs"
         ];
 
         foreach ($allergens as $allergen) {

@@ -1,7 +1,7 @@
 <?php
 return [
-    ['type' => 'food',  'name' => 'Pizze Gourmet'],
-    ['type' => 'food',  'name' => 'Pizza Baciata Impasto Scrocchiarella'],
+    ['type' => 'food',  'name' => 'Gourmet'],
+    ['type' => 'food',  'name' => 'Pizze Baciate'],
     ['type' => 'food',  'name' => 'Pizze da Napoli'],
     ['type' => 'food',  'name' => 'Pizze Rosse'],
     ['type' => 'food',  'name' => 'Pizze Bianche'],
