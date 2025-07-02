@@ -227,12 +227,12 @@
                 <div class="input-group mb-3">
                     <input 
                         type="number" 
-                        step="1" 
+                        step="0.1" 
                         min="0"
                         name="alcohol_volume"
                         id="alcohol_volume"
                         value="{{ old('alcohol_volume') }}"
-                        class="form-control"
+                        class="form-control input-number "
                         {{ old('is_alcoholic') === '1' ? 'required' : '' }}>
                     <span class="input-group-text">%</span>
                     @error('alcohol_volume')
@@ -251,7 +251,7 @@
                         name="primary_size" 
                         value="{{old('primary_size')}}"
                         id="primary_size" 
-                        class="form-control"
+                        class="form-control input-number "
                         required>
                     <span class="input-group-text">cc</span>
                     @error('primary_size')
@@ -269,7 +269,7 @@
                         name="secondary_size" 
                         value="{{old('secondary_size')}}"
                         id="secondary_size"
-                        class="form-control">
+                        class="form-control input-number ">
                     <span class="input-group-text">cc</span>
                     @error('secondary_size')
                         <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -310,9 +310,15 @@
 
     <hr>
 
-    {{-- submit --}}
-    <div class="text-center">
-        <button type="submit" class="btn btn-primary">
+        {{-- pulsanti --}}
+    <div class="d-flex justify-content-between align-items-center my-4 w-100">
+        {{-- Torna indietro --}}
+        <a href="{{ route('products.index') }}" class="btn btn-outline-primary shadow-sm">
+            <i class="bi bi-arrow-left-circle"></i> Torna indietro
+        </a>
+
+        {{-- Submit --}}
+        <button type="submit" class="btn btn-success">
             Salva
         </button>
     </div>

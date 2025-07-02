@@ -131,11 +131,7 @@
         <button type="button" class="btn btn-outline-danger mx-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="bi bi-trash"></i> Elimina
         </button>
-    </div>
-
-
-            
-    </div>
+    </div>  
 </div>
     
    
