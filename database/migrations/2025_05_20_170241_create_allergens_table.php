@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //crea la tabella allergeni
         Schema::create('allergens', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', 50); //nome allergene
+            $table->string('name', 50); // Nome allergene
 
             $table->timestamps();
         });
@@ -25,6 +26,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Elimina la tabella allergeni se esiste
         Schema::dropIfExists('allergens');
     }
 };

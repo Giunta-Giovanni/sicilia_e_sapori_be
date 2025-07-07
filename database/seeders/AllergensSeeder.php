@@ -14,6 +14,7 @@ class AllergensSeeder extends Seeder
      */
     public function run(): void
     {
+        // Tutti gli Allergeni esistenti
         $allergens = [
             "gluten",
             "crustaceans",
@@ -32,10 +33,13 @@ class AllergensSeeder extends Seeder
         ];
 
         foreach ($allergens as $allergen) {
+            // crea una nuova istanza allergene
             $newAllergen = new Allergen();
 
+            // aggiungi il nome
             $newAllergen->name = $allergen;
 
+            // salva
             $newAllergen->save();
         }
     }

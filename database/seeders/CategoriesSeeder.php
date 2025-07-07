@@ -13,13 +13,16 @@ class CategoriesSeeder extends Seeder
      */
     public function run(): void
     {
+        // file data di tutte le categorie iniziali
         $categories = config('data.categories');
         foreach ($categories as $category) {
 
-            // creiamo l'istanza
+            // creiamo l'istanza categoria
             $newCategory = new Category();
 
+            // aggiungiamo il tipo
             $newCategory->type = $category['type'];
+            // aggiungiamo il nome
             $newCategory->name = $category['name'];
 
             // salviamo l'istanza  

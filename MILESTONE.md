@@ -31,3 +31,11 @@
 
 # Milestone 4
 8. generare api per sviluppo fe
+
+__DA FARE__
+# MIlestone 5
+9. Attivare la validation
+
+# MIlestone 6
+10. Per il deploing ricordati il route cache (leggi doc laravel)
+11. settare il cors corretto 

@@ -14,7 +14,7 @@ class Allergen_ProductSeeder extends Seeder
 
     public function run(): void
     {
-        // file data di tabella pivot
+        // file data di prodotti allergeni
         $allergensProducts = config('data.allergen_product');
 
         // per ogni dato 

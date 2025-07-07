@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // crea la tabella categories
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['food', 'drink']);
-            $table->string('name', 50); //nome categoria
+            $table->enum('type', ['food', 'drink']);    // Tipo
+            $table->string('name', 50);                 // Nome
             $table->timestamps();
         });
     }
@@ -24,6 +25,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // elimina la tabella "categories" se esiste
         Schema::dropIfExists('categories');
     }
 };

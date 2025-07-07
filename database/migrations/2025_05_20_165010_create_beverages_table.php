@@ -11,24 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Crea la tabella beverages
         Schema::create('beverages', function (Blueprint $table) {
             $table->id();
 
-            // prodotto
-            $table->foreignId('product_id')->constrained();
-
-            // diversi alla tabella foods
-            $table->boolean('is_alcholic')->default(false); //è alcolico?
-            $table->decimal('alcohol_volume', 4, 1)->nullable(); //percentuale alcolica
-            $table->decimal('primary_size', 4, 0); //dimensioni primarie
-            $table->decimal('secondary_size', 4, 0)->nullable(); //dimensioni primarie
-
-            // $table->unsignedBigInteger('id_product'); //id prodotto
+            $table->foreignId('product_id')->constrained();         // id prodotto associato
+            $table->boolean('is_alcholic')->default(false);         // E' alcolico?
+            $table->decimal('alcohol_volume', 4, 1)->nullable();    // Percentuale alcolica
+            $table->decimal('primary_size', 4, 0);                  // Dimensioni primarie
+            $table->decimal('secondary_size', 4, 0)->nullable();    // Dimensioni primarie
 
             $table->timestamps();
-
-            // foreign key
-
         });
     }
 
@@ -37,6 +30,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+
+        // Elimina la tabella beverages se esiste
         Schema::dropIfExists('beverages');
     }
 };

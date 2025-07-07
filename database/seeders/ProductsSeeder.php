@@ -15,11 +15,16 @@ class ProductsSeeder extends Seeder
      */
     public function run(): void
     {
+        
+        // file data di tutti i prodotti iniziali
         $products = config('data.products');
 
+        // entriamo nella cartella prodotti e ci prendiamo i singoli file prodotti
         foreach ($products as $productSections) {
+            // per ogni file entramio nella lista e ci ricaviamo il prodotto
             foreach ($productSections as $product) {
 
+                // cerca se il prodotto esiste e se esiste non lo aggiunge ma lo aggiorna
                 $newProduct = Product::firstOrNew([
                     'name_it' => $product['name_it'],
                     'category_id' => $product['category_id'],
@@ -35,6 +40,7 @@ class ProductsSeeder extends Seeder
 
                 $newProduct->save();
 
+                // se il prodotto e di tipo cibo
                 if ($product['type'] === "food") {
                     // ricaviamoci il nuovo id 
                     $newfood = new Food();
@@ -44,6 +50,8 @@ class ProductsSeeder extends Seeder
                     $newfood->is_vegetarian = $product['is_vegetarian'];
 
                     $newfood->save();
+
+                    //altrimenti se è una bevanda
                 } elseif ($product['type'] === "drink") {
 
                     $newBeverage = new Beverage();
@@ -56,11 +64,6 @@ class ProductsSeeder extends Seeder
 
                     $newBeverage->save();
                 }
-
-
-
-                // se cattegory_id e compresa tra i numeri 1 e 12 allora creami il prodotto food
-                // altrimenti creami il prodotto beverage
             }
         }
     }

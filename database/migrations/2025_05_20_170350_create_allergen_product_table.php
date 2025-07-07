@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Crea la tabella pivot allergeni prodotti 
         Schema::create('allergen_product', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('allergen_id')->constrained(); //id ingrediente
-            $table->foreignId('product_id')->constrained(); //id prodotto
+            $table->foreignId('allergen_id')->constrained();    // Id ingrediente
+            $table->foreignId('product_id')->constrained();     // Id prodotto
 
             $table->timestamps();
         });
@@ -26,6 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Elimina la tabella pivot allergeni prodotti se esiste
         Schema::dropIfExists('allergen_product');
     }
 };

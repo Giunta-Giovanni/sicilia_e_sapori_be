@@ -11,18 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // crea la tabella prodotti
         Schema::create('products', function (Blueprint $table) {
             $table->id();
 
-            $table->enum('type', ['food', 'drink']);
-            $table->foreignId('category_id')->constrained();
+            $table->enum('type', ['food', 'drink']);                // Tipo
+            $table->foreignId('category_id')->constrained();        // Id categoria associato al prodotto
 
-            $table->string('name_it', 50); //nome it
-            $table->string('name_eng', 50)->nullable(); //nome eng
-            $table->text('description_it')->nullable(); //descrizione
-            $table->text('description_eng')->nullable(); //descrizione
-            $table->decimal('primary_price', 4, 2); //prezzo primario
-            $table->decimal('secondary_price', 4, 2)->nullable(); //prezzo secondario
+            $table->string('name_it', 50);                          // Nome it
+            $table->string('name_eng', 50)->nullable();             // Nome eng
+            $table->text('description_it')->nullable();             // Descrizione it
+            $table->text('description_eng')->nullable();            // Descrizione eng
+            $table->decimal('primary_price', 4, 2);                 // Prezzo primario
+            $table->decimal('secondary_price', 4, 2)->nullable();   // Prezzo secondario
 
 
             $table->timestamps();
@@ -34,6 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // elimina la tabella "products" se esiste
         Schema::dropIfExists('products');
     }
 };

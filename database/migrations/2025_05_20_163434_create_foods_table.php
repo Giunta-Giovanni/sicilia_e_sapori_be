@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // crea la tabella cibi
         Schema::create('foods', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('product_id')->constrained();
+            $table->foreignId('product_id')->constrained();     // id prodotto associato
 
-            // diversi alla tabella beverages
-            $table->boolean('is_spicy')->default(false);
-            $table->boolean('is_vegetarian')->default(false);
+            $table->boolean('is_spicy')->default(false);        // è piccante?
+            $table->boolean('is_vegetarian')->default(false);   // è vegetariano?
 
-            // $table->unsignedBigInteger('id_product');
             $table->timestamps();
         });
     }
@@ -30,6 +29,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // elimina la tabella "foods" se esiste
         Schema::dropIfExists('foods');
     }
 };
