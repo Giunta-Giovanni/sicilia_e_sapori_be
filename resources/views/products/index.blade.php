@@ -78,9 +78,9 @@
                         {{-- nome --}}
                         <td>{{ $product->name_it }}</td>
                         {{-- descrizione --}}
-                        <td class="d-none d-md-table-cell">{{$product->description_it?$product->description_it:'NESSUNA DESCRIZIONE' }}</td>
+                        <td class="d-none d-md-table-cell {{!$product->description_it? "empty-tab":null }} ">{{$product->description_it?$product->description_it:'Nessuna Descrizione' }}</td>
                         {{-- allergeni --}}
-                        <td class="d-none d-sm-table-cell">{{ count($allergens) ? implode(', ', $allergens) : '//' }}</td>
+                        <td class="d-none d-sm-table-cell {{!count($allergens)? "empty-tab":null }}">{{ count($allergens) ? implode(', ', $allergens) : '//' }}</td>
                         {{-- action --}}
                         <td class="text-center">
                             <a href="{{ route('products.show', $product->id) }}" class="btn btn-outline-primary btn-sm px-3">
