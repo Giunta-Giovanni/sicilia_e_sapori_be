@@ -49,3 +49,143 @@ input[type=number] {
     text-align: right;
     padding-right: 1rem;
 }
+
+/* gourmet */
+.cat1 {
+    background-color: #4B2C14 !important;
+    /* marrone intenso */
+    color: #FEFDFC !important;
+}
+
+/* baciate */
+.cat2 {
+    background-color: #6D3C1C !important;
+    /* marrone medio-ramato */
+    color: #FEFDFC !important;
+}
+
+/* da napoli */
+.cat3 {
+    background-color: #1F3A5F !important;
+    /* blu profondo, per richiamo al mare */
+    color: #FEFDFC !important;
+}
+
+/* pizze rosse */
+.cat4 {
+    background-color: #C0392B !important;
+    /* rosso acceso */
+    color: #FEFDFC !important;
+}
+
+/* pizze bianche */
+.cat5 {
+    background-color: #F7F1E7 !important;
+    /* bianco panna */
+    color: #311B04 !important;
+}
+
+/* pizze al pesce */
+.cat6 {
+    background-color: #4A637D !important;
+    /* blu-grigio mare */
+    color: #FEFDFC !important;
+}
+
+/* calzoni */
+.cat7 {
+    background-color: #B8860B !important;
+    /* oro caldo */
+    color: #311B04 !important;
+}
+
+/* scaccioni */
+.cat8 {
+    background-color: #D19F1A !important;
+    /* senape scuro */
+    color: #311B04 !important;
+}
+
+/* panini */
+.cat9 {
+    background-color: #A5642A !important;
+    /* marrone pane */
+    color: #FEFDFC !important;
+}
+
+/* piatti */
+.cat10 {
+    background-color: #EDC67C !important;
+    /* beige caldo */
+    color: #311B04 !important;
+}
+
+/* friggitoria */
+.cat11 {
+    background-color: #C0392B !important;
+    /* rosso fritto/delizioso */
+    color: #FEFDFC !important;
+}
+
+/* dessert */
+.cat12 {
+    background-color: #D97E6D !important;
+    /* rosa pesca dolce */
+    color: #311B04 !important;
+}
+
+/* bar */
+.cat13 {
+    background-color: #AF5F18 !important;
+    /* marrone-arancio vivace */
+    color: #FEFDFC !important;
+}
+
+/* birre */
+.cat14 {
+    background-color: #F5D76E !important;
+    /* giallo oro */
+    color: #311B04 !important;
+}
+
+/* vini bianchi */
+.cat15 {
+    background-color: #F9F3E3 !important;
+    /* panna/avorio */
+    color: #311B04 !important;
+}
+
+/* vini frizzanti */
+.cat16 {
+    background-color: #FFFBEA !important;
+    /* giallo chiaro brillante */
+    color: #311B04 !important;
+}
+
+/* vini rossi */
+.cat17 {
+    background-color: #7B241C !important;
+    /* rosso scuro vinoso */
+    color: #FEFDFC !important;
+}
+
+/* bevande */
+.cat18 {
+    background-color: #D5C7B5 !important;
+    /* beige soft */
+    color: #311B04 !important;
+}
+
+/* pizze con mozzarella di bufala */
+.cat19 {
+    background-color: #F0E4D4 !important;
+    /* bianco latteo */
+    color: #311B04 !important;
+}
+
+/* cocktails */
+.cat20 {
+    background-color: #8E3B2F !important;
+    /* rosso-marrone amaro tipo bitter */
+    color: #FEFDFC !important;
+}
