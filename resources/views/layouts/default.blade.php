@@ -1,46 +1,48 @@
+{{-- Layout utilizzato dentro l'autentificazione e verifica --}}
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{-- titolo fisso con sottotitolo dinamico --}}
     <title>Sicilia e sapori: @yield('title')</title>
+    {{-- file css e js di vite --}}
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    {{-- <link rel="stylesheet" href="/css/main.css"> --}}
-
 </head>
 <body>
     <header>
           <div id="app">
 
-
+        {{-- navbar --}}
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                {{-- LINK dashboard con logo --}}
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/dashboard') }}">
                     <div class="logo">
                         <img src="{{ asset('img/logo.svg') }}" alt="">
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
-
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    <!-- Lato sinistro  -->
                     <ul class="navbar-nav me-auto">
+                        {{-- LINK -> Prodotti --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/products') }}">{{ __('Prodotti') }}</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{url('/products') }}">{{ __('Products') }}</a>
-                        </li> --}}
+                        {{-- LINK -> Allergeni --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/allergens') }}">{{ __('Allergeni') }}</a>
                         </li>
-                                                </li>
-                                                <li class="nav-item">
+                        
+                        {{-- LINK -> Categorie --}}
+                        <li class="nav-item">
                             <a class="nav-link" href="{{url('/categories') }}">{{ __('Categorie') }}</a>
                         </li>
                     </ul>
@@ -52,12 +54,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
+                        
+                        {{-- se la registrazione è attiva mostrare link --}}
                         @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else
+
+
+                        {{-- link amministrativi --}}
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
