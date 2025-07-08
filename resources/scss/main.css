@@ -1,16 +1,69 @@
-.price {
-    width: 50px;
+/* =====================
+   GENERAL VARIABLES
+   ===================== */
+:root {
+    /* Color palette */
+    --primary-brown: #311B04;
+    --secondary-brown: #612D06;
+    --terziary-brown: #7A3907;
+
+    --primary-white: #F7F1E7;
+    --secondary-white: #FEFDFC;
+
+    --primary-gold: #B8860B;
+    --primary-red: #C0392B;
+
+    /* Scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+/* =====================
+   GENERAL STYLES
+   ===================== */
+body {
+    font-family: "Raleway", serif !important;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: var(--primary-white) !important;
 }
 
 .logo {
-    width: 150px;
+    width: 8rem;
 }
 
 .logo-home {
-    width: 400px;
+    width: 20rem;
+}
+
+.price {
+    width: 50px;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.input-number {
+    text-align: right;
+    padding-right: 1rem;
+}
+
+/* Disable number spinner */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
 }
 
 
+/* =====================
+   BUTTONS & LINKS
+   ===================== */
 .login-btn {
     border: 1px solid black;
     border-radius: 33px;
@@ -22,170 +75,205 @@
 
 .login-btn:hover {
     background-color: rgba(247, 246, 246, 0.682);
+}
+
+.search_btn {
+    background-color: var(--secondary-white) !important;
+    border: 1px solid #311B04;
+    color: var(--primary-brown);
+}
+
+.search_btn:hover {
+    background-color: var(--primary-white) !important;
+    border: 1px solid #311B04;
+    color: var(--primary-brown);
+}
+
+#category {
+    background-color: var(--secondary-white);
+    border: 1px solid #311B04;
+    color: var(--primary-brown);
+}
+
+
+.show_btn {
+    width: 1rem;
+}
+
+.show_btn a {
+    text-decoration: none;
+    color: var(--primary-gold);
+    border: 1px solid var(--primary-brown);
+    padding: 0.2rem 0.3rem 0.4rem 0.3rem;
+    transition: background-color 0.3s ease;
 
 }
+
+.show_btn img {
+    width: 1.2rem;
+    transition: transform 0.3s ease;
+
+}
+
+.show_btn:hover a {
+    background-color: var(--primary-white);
+}
+
+.show_btn:hover img {
+    transform: rotatez(90deg);
+}
+
+
+
+/* =====================
+   ELEMENTS
+   ===================== */
+
 
 .empty-tab {
     background-color: rgba(232, 230, 230, 0.871) !important;
 }
 
-.price {
-    text-align: right;
-    padding-right: 1rem;
+
+/* =====================
+   TABLES
+   ===================== */
+.ses-table {
+    background-color: var(--secondary-white);
+    border: 1px solid var(--primary-brown);
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.ses-table th {
+    font-weight: 400;
+    color: var(--primary-brown);
+    background-color: rgba(232, 230, 230, 0.871);
+    border: 0.5px solid var(--primary-brown);
 }
 
-/* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
+.ses-table td {
+    border: 0.5px solid var(--primary-brown);
 }
 
-.input-number {
-    text-align: right;
-    padding-right: 1rem;
-}
 
+/* =====================
+   CATEGORY COLORS (cat1 - cat20)
+   ===================== */
 /* gourmet */
 .cat1 {
     background-color: #4B2C14 !important;
-    /* marrone intenso */
     color: #FEFDFC !important;
 }
 
 /* baciate */
 .cat2 {
     background-color: #6D3C1C !important;
-    /* marrone medio-ramato */
     color: #FEFDFC !important;
 }
 
 /* da napoli */
 .cat3 {
     background-color: #1F3A5F !important;
-    /* blu profondo, per richiamo al mare */
     color: #FEFDFC !important;
 }
 
 /* pizze rosse */
 .cat4 {
     background-color: #C0392B !important;
-    /* rosso acceso */
     color: #FEFDFC !important;
 }
 
 /* pizze bianche */
 .cat5 {
     background-color: #F7F1E7 !important;
-    /* bianco panna */
     color: #311B04 !important;
 }
 
 /* pizze al pesce */
 .cat6 {
     background-color: #4A637D !important;
-    /* blu-grigio mare */
     color: #FEFDFC !important;
 }
 
 /* calzoni */
 .cat7 {
     background-color: #B8860B !important;
-    /* oro caldo */
     color: #311B04 !important;
 }
 
 /* scaccioni */
 .cat8 {
     background-color: #D19F1A !important;
-    /* senape scuro */
     color: #311B04 !important;
 }
 
 /* panini */
 .cat9 {
     background-color: #A5642A !important;
-    /* marrone pane */
     color: #FEFDFC !important;
 }
 
 /* piatti */
 .cat10 {
     background-color: #EDC67C !important;
-    /* beige caldo */
     color: #311B04 !important;
 }
 
 /* friggitoria */
 .cat11 {
     background-color: #C0392B !important;
-    /* rosso fritto/delizioso */
     color: #FEFDFC !important;
 }
 
 /* dessert */
 .cat12 {
     background-color: #D97E6D !important;
-    /* rosa pesca dolce */
     color: #311B04 !important;
 }
 
 /* bar */
 .cat13 {
     background-color: #AF5F18 !important;
-    /* marrone-arancio vivace */
     color: #FEFDFC !important;
 }
 
 /* birre */
 .cat14 {
     background-color: #F5D76E !important;
-    /* giallo oro */
     color: #311B04 !important;
 }
 
 /* vini bianchi */
 .cat15 {
     background-color: #F9F3E3 !important;
-    /* panna/avorio */
     color: #311B04 !important;
 }
 
 /* vini frizzanti */
 .cat16 {
     background-color: #FFFBEA !important;
-    /* giallo chiaro brillante */
     color: #311B04 !important;
 }
 
 /* vini rossi */
 .cat17 {
     background-color: #7B241C !important;
-    /* rosso scuro vinoso */
     color: #FEFDFC !important;
 }
 
 /* bevande */
 .cat18 {
     background-color: #D5C7B5 !important;
-    /* beige soft */
     color: #311B04 !important;
 }
 
 /* pizze con mozzarella di bufala */
 .cat19 {
     background-color: #F0E4D4 !important;
-    /* bianco latteo */
     color: #311B04 !important;
 }
 
 /* cocktails */
 .cat20 {
     background-color: #8E3B2F !important;
-    /* rosso-marrone amaro tipo bitter */
     color: #FEFDFC !important;
 }

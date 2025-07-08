@@ -37,7 +37,7 @@
             </select>
 
             {{-- pulsante di invio richiesta --}}
-            <button type="submit" class="btn btn-secondary" style="border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem;">
+            <button type="submit" class="btn search_btn" style="border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem;">
                 Cerca
             </button>
         </div>
@@ -47,8 +47,8 @@
     <span>Totale prodotti:{{count($products)}}</span>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-sm align-middle">
-            <thead class="table-light text-center">
+        <table class="table ses-table table-sm align-middle">
+            <thead class="table-light text-center ">
             {{-- titoli colonne --}}
                 <tr>
                     {{-- categorie --}}
@@ -75,16 +75,18 @@
                     <tr>
                         {{-- categorie --}}
                         <td class="d-none d-sm-table-cell cat{{$product->category->id}}">{{ $product->category->name }}</td>
-                        {{-- nome --}}
-                        <td>{{ $product->name_it }}</td>
+                        {{-- nome con e senza stile --}}
+
+                        <td class="d-none d-sm-table-cell cat">{{ $product->name_it }}</td>
+                        <td class="d-sm-none cat{{$product->category->id}}">{{ $product->name_it }}</td>
                         {{-- descrizione --}}
                         <td class="d-none d-md-table-cell {{!$product->description_it? "empty-tab":null }} ">{{$product->description_it?$product->description_it:'Nessuna Descrizione' }}</td>
                         {{-- allergeni --}}
                         <td class="d-none d-sm-table-cell {{!count($allergens)? "empty-tab":null }}">{{ count($allergens) ? implode(', ', $allergens) : '//' }}</td>
                         {{-- action --}}
-                        <td class="text-center">
-                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-outline-primary btn-sm px-3">
-                                Visualizza
+                        <td class="text-center show_btn">
+                            <a href="{{ route('products.show', $product->id) }}">
+                                <img src="{{ asset('img/lens.svg') }}" alt="">
                             </a>
                         </td>
                     </tr>
