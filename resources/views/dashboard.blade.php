@@ -1,5 +1,10 @@
+{{-- aut. layout --}}
 @extends('layouts.default')
 
+{{-- title --}}
+@section('title', "Dashboard")
+
+{{-- body --}}
 @section('content')
 <div class="container">
     <h2 class="text-center my-4">
