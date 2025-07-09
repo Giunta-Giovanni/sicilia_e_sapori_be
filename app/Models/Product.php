@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    // Protezione contro mass assignment involontario o malevolo
+    protected $fillable = [
+        'type',
+        'category_id',
+        'name_it',
+        'name_eng',
+        'description_it',
+        'description_eng',
+        'primary_price',
+        'secondary_price',
+    ];
 
     // connessione one to many con category
     public function category()
