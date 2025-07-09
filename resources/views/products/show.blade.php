@@ -45,7 +45,7 @@
     {{-- Info principali --}}
     <div class="table-responsive">
         <table class="table table-bordered table-striped align-middle text-center shadow-sm">
-            <thead class="show_thead">
+            <thead class="table-dark">
                 <tr>
                     <th colspan="2">Informazioni Generali</th>
                 </tr>
