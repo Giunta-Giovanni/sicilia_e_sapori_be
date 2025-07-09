@@ -1,8 +1,12 @@
+{{-- aut. layout --}}
 @extends('layouts.default')
 
+{{-- title --}}
 @section('content')
 
+
 <?php
+// salvo gli allergeni del prodotto in una lista
     $allergens =[];
     foreach($product->allergens as $allergen){
         array_push($allergens, $allergen->name );
@@ -15,6 +19,7 @@
 
     {{-- Lingue --}}
     <div class="row mb-4">
+        {{-- ITALIANO --}}
         <div class='col-md-6'>
             <div class="card shadow-sm">
                 <div class="card-header text-white bg-primary text-center">🇮🇹 Italiano</div>
@@ -25,6 +30,7 @@
             </div>
         </div>
 
+        {{-- INGLESE --}}
         <div class='col-md-6'>
             <div class="card shadow-sm">
                 <div class="card-header text-white bg-success text-center">🇬🇧 English</div>
@@ -39,28 +45,34 @@
     {{-- Info principali --}}
     <div class="table-responsive">
         <table class="table table-bordered table-striped align-middle text-center shadow-sm">
-            <thead class="table-dark">
+            <thead class="show_thead">
                 <tr>
                     <th colspan="2">Informazioni Generali</th>
                 </tr>
             </thead>
             <tbody>
+                {{-- Prezzo primario --}}
                 <tr>
                     <td><strong>Prezzo</strong></td>
                     <td>{{ $product->primary_price }} €</td>
                 </tr>
 
+                {{-- Prezzo secondario --}}
                 @if ($product->secondary_price)
                     <tr>
+                        {{-- Condizione Nome prezzo per pizze o bevande --}}
                         <td><strong>{{$product->type === 'food'?'Prezzo Maxi / Scrocchiarella': 'Prezzo Secondario'}}</strong></td>
                         <td>{{ $product->secondary_price }} €</td>
                     </tr>
                 @endif
 
+                {{-- Categorie --}}
                 <tr>
                     <td><strong>Categoria</strong></td>
                     <td>{{ $product->category->name }}</td>
                 </tr>
+
+                {{-- Allergeni --}}
                 @if($allergens)
                     <tr>
                         <td><strong>Allergeni</strong></td>
@@ -71,15 +83,18 @@
                 @endif
       
                 {{-- Info specifiche per tipo prodotto --}}
-                {{-- SE é UN CIBO  --}}
+                {{-- Se è un cibo  --}}
                 @if ($product->type === 'food')
 
+                        {{-- Piccante --}}
                         <tr>
                             <td><strong>Piccante?</strong></td>
                             <td class="{{ $product->food->is_spicy ? 'table-success' : 'table-danger'}}">
                                 {{ $product->food->is_spicy ? 'SI' : 'NO' }}
                             </td>
                         </tr>
+                        
+                        {{-- Vegetariano --}}
                         <tr>
                             <td><strong>Vegetariano?</strong></td>
                             <td class="{{ $product->food->is_vegetarian ? 'table-success' : 'table-danger' }}">
@@ -87,23 +102,27 @@
                             </td>
                         </tr>
 
-                {{-- SE é UNA BEVANDA --}}
+                {{-- Se è una bevanda --}}
                 @elseif ($product->type === 'drink')
+                     {{-- alcolico? --}}
                     <tr>
                         <td><strong>Alcolico?</strong></td>
                         <td class="{{ $product->beverage->is_alcholic ?  'table-success' : 'table-danger'}}">
                             {{ $product->beverage->is_alcholic ? 'SI' : 'NO' }}
                         </td>
                     </tr>
+                    {{-- percentuale alcolica --}}
                     <tr>
                         <td><strong>Vol. Alcolico</strong></td>
                         <td>{{ $product->beverage->alcohol_volume }}%</td>
                     </tr>
+                    {{-- Formato Standard --}}
                     <tr>
                         <td><strong>Formato Standard</strong></td>
                         <td>{{ $product->beverage->primary_size }} cl</td>
                     </tr>
 
+                    {{-- Formato Secondario --}}
                     @if ($product->beverage->secondary_size)
                         <tr>
                             <td><strong>Formato Grande</strong></td>
@@ -133,11 +152,10 @@
         </button>
     </div>  
 </div>
-    
-   
 @endsection
 
-        <!-- Modal -->
+{{-- Pop up per confermare l'eliminazione --}}
+<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

@@ -1,25 +1,33 @@
+{{-- aut. layout --}}
 @extends('layouts.default')
 
+{{-- title --}}
 @section('title', "Nuovo Prodotto")
 
+{{-- body --}}
 @section('content')
 
 <?php
 
+    // save food categorie
     $foodCategories =[];
+
+    // save beverages categories
     $beverageCategories = [];
     foreach($categories as $category){
     if($category->type === 'food'){
-        array_push($foodCategories, $category);
+        $foodCategories[] = $category;
     } else{
-         array_push($beverageCategories, $category);
+        $beverageCategories[] = $category;
     }
     }
 ?>
 {{-- @dd($foodCategories) --}}
 <form action="{{ route('products.store') }}" method="POST" class="container mt-4 p-4 border rounded shadow bg-white">
     
+    {{--Token CSRF per protezione contro attacchi cross-site request forgery.--}}
     @csrf
+    
     <input type="hidden" name="type" value="{{ $type }}">
 
     {{-- category --}}

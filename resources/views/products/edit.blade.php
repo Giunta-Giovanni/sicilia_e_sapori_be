@@ -18,17 +18,22 @@
 
 {{-- @dd($product->beverage) --}}
 <form action="{{ route('products.update', $product) }}" method="POST" class="container mt-4 p-4 border rounded shadow bg-white">
+    
+    {{-- Token CSRF per protezione contro attacchi cross-site request forgery. --}}
     @csrf
+
+    {{-- metodo Laravel per indicare una richiesta PUT di modifica --}}
     @method('PUT')
     
 
 
     {{-- @dd($product->type) --}}
+
     {{-- type --}}
     <input type="hidden" name="type" value="{{ $product->type }}">
 
 
-        {{-- category --}}
+    {{-- category --}}
     <div class="mb-3">
         <label for="category" class="form-label">Categoria*</label>
         <select name="category_id" id="category" class="form-select"required>
@@ -334,5 +339,6 @@
             Salva
         </button>
     </div>
+    
 </form>
 @endsection
