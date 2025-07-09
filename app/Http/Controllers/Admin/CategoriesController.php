@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CategoriesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostra la lista delle categorie.
      */
     public function index()
     {

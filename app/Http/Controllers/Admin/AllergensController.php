@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AllergensController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostra la lista degli allergeni
      */
     public function index()
     {
