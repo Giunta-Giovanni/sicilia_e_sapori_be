@@ -18,7 +18,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Rotte protette da autenticazione (profilo utente)
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     // Modifica profilo
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Aggiorna profilo
