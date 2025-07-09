@@ -13,19 +13,22 @@ use Illuminate\Http\Request;
 class ProductsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostra la lista dei prodotti
      */
     public function index(Request $request)
     {
+        // salvo le categorie e le ordino in ordine alfabetico
         $categories = Category::orderBy('name')->get();
 
+        // salvo la categoria richiesta dall'utente 
         $categoryId = $request->query('category');
 
+        // se l'utente ha richiesto la categoria
         if ($categoryId) {
-            // Se c'è un filtro category e non è vuoto
+            // Se è presente un filtro di categoria, mostro solo i prodotti associati
             $products = Product::where('category_id', $categoryId)->get();
         } else {
-            // Altrimenti prendi tutti i prodotti
+            // Altrimenti mostro tutti i prodotti
             $products = Product::all();
         }
 
@@ -33,22 +36,31 @@ class ProductsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostra il form di creazione di un nuovo prodotto
      */
     public function create(Request $request)
     {
+
         $type = $request->query('type');
-        $products = Product::orderby('category_id', 'asc')->get();
+        // $products = Product::orderby('category_id', 'asc')->get();
         $categories = Category::orderby('name')->get();
         $allergens = Allergen::orderby('name')->get();
 
 
-        return view('products.create', compact('type', 'products', 'categories', 'allergens'));
+        return view(
+            'products.create',
+            compact(
+                'type',
+                /** 'products',*/
+                'categories',
+                'allergens'
+            )
+        );
     }
 
 
     /**
-     * Store a newly created resource in storage.
+     * Salva un nuovo prodotto nel database
      */
     public function store(Request $request)
     {
@@ -133,9 +145,9 @@ class ProductsController extends Controller
 
         $newProduct->save();
 
-
+        // se il nuvo prodotto richiesto è un cibo
         if ($validated['type'] === "food") {
-            // ricaviamoci il nuovo id 
+            // creiamo l'istanza è aggiungiamo le info specifiche
             $newfood = new Food();
 
             $newfood->product_id = $newProduct->id;
@@ -143,8 +155,10 @@ class ProductsController extends Controller
             $newfood->is_vegetarian = $validated['is_vegetarian'];
 
             $newfood->save();
-        } elseif ($validated['type'] === "drink") {
 
+            // se il nuvo prodotto richiesto è una bevanda
+        } elseif ($validated['type'] === "drink") {
+            // creiamo l'istanza è aggiungiamo le info specifiche
             $newBeverage = new Beverage();
 
             $newBeverage->product_id = $newProduct->id;
@@ -169,7 +183,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Mostra un singolo prodotto
      */
     public function show(Product $product)
     {
@@ -177,7 +191,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostra il form di modifica
      */
     public function edit(Product $product)
     {
@@ -188,7 +202,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Aggiorna un prodotto
      */
     public function update(Request $request, Product $product, Beverage $beverage, Food $food)
     {
@@ -274,7 +288,7 @@ class ProductsController extends Controller
 
         $product->update();
 
-        // modifichiamo i dati particolari del prodotto
+        // Aggiorna record specifico food/drink
         if ($validated['type'] === 'food') {
             // se c'e stato errore elimina la bevanda con lo stesso id
             Beverage::where('product_id', $product->id)->delete();
@@ -311,7 +325,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Cancella un prodotto
      */
     public function destroy(Product $product)
     {
@@ -331,6 +345,7 @@ class ProductsController extends Controller
         // Infine, elimina il prodotto
         $product->delete();
 
+        // ritorniamo alla tabella prodotti con un messaggio di successo
         return redirect()->route('products.index')->with('success', "Prodotto: $product->name_it eliminato con successo.");
     }
 }
