@@ -77,7 +77,8 @@ class ProductsController extends Controller
         //mi salvo il prodotto filtrati
         $filtered  = [
             'id' => $product->id, //id prodotto
-            'type' => $product->type, // tipo di prodotto
+            'availability' => $product->availability, //availability
+            'type' => $product->category->type, // tipo di prodotto
             'category_id' => $product->category_id, //id della categoria
             'category_name' => $product->category->name, // nome della categoria
             'name_it' => $product->name_it, // nome in italiano

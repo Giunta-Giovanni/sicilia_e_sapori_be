@@ -51,6 +51,14 @@
                 </tr>
             </thead>
             <tbody>
+                
+                {{-- Disponibilità --}}
+                <tr>
+                    <td><strong>Tipo di Disponibilità</strong></td>
+                    <td>{{ $product->availability }}</td>
+                </tr>
+
+
                 {{-- Prezzo primario --}}
                 <tr>
                     <td><strong>Prezzo</strong></td>
@@ -61,7 +69,7 @@
                 @if ($product->secondary_price)
                     <tr>
                         {{-- Condizione Nome prezzo per pizze o bevande --}}
-                        <td><strong>{{$product->type === 'food'?'Prezzo Maxi / Scrocchiarella': 'Prezzo Secondario'}}</strong></td>
+                        <td><strong>{{$product->category->type === 'food'?'Prezzo Maxi / Scrocchiarella': 'Prezzo Secondario'}}</strong></td>
                         <td>{{ $product->secondary_price }} €</td>
                     </tr>
                 @endif
@@ -71,6 +79,7 @@
                     <td><strong>Categoria</strong></td>
                     <td>{{ $product->category->name }}</td>
                 </tr>
+
 
                 {{-- Allergeni --}}
                 @if($allergens)
@@ -84,7 +93,7 @@
       
                 {{-- Info specifiche per tipo prodotto --}}
                 {{-- Se è un cibo  --}}
-                @if ($product->type === 'food')
+                @if ($product->category->type === 'food')
 
                         {{-- Piccante --}}
                         <tr>
@@ -103,7 +112,7 @@
                         </tr>
 
                 {{-- Se è una bevanda --}}
-                @elseif ($product->type === 'drink')
+                @elseif ($product->category->type === 'drink')
                      {{-- alcolico? --}}
                     <tr>
                         <td><strong>Alcolico?</strong></td>

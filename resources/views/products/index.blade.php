@@ -53,6 +53,8 @@
                 <tr>
                     {{-- categorie --}}
                     <th class="d-none d-sm-table-cell">Categorie</th>
+                    {{-- Disponibilità --}}
+                    <th class="d-none d-sm-table-cell">Disponibilita</th>
                     {{-- nome --}}
                     <th>Nome Prodotto</th>
                     {{-- descrizione --}}
@@ -76,6 +78,7 @@
                         {{-- categorie --}}
                         <td class="d-none d-sm-table-cell cat{{$product->category->id}}">{{ $product->category->name }}</td>
                         {{-- nome con e senza stile --}}
+                        <td class="d-none d-sm-table-cell cat">{{$product->availability}}</td>
 
                         <td class="d-none d-sm-table-cell cat">{{ $product->name_it }}</td>
                         <td class="d-sm-none cat{{$product->category->id}}">{{ $product->name_it }}</td>

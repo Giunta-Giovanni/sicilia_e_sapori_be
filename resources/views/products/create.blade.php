@@ -46,6 +46,16 @@
         </select>
     </div>
 
+      {{-- availability --}}
+    <div class="mb-3">
+        <label for="availability" class="form-label">Tipo di Disponibilità*</label>
+        <select name="availability" id="availability" class="form-select"required>
+            <option value='both' {{ old('availability') == 'both'?'selected':''}}>both</option>
+            <option value='dinein' {{ old('availability') == 'dinein'?'selected':''}}>dinein</option>
+            <option value='takeaway' {{ old('availability') == 'takeaway'?'selected':''}}>takeaway</option>
+        </select>
+    </div>
+
     {{-- name --}}
     <div class="row mb-3">
         <div class="col-md-6">
