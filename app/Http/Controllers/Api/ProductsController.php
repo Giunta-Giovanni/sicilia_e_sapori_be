@@ -104,7 +104,7 @@ class ProductsController extends Controller
         }
 
         //se il prodotto è un cibo e il prodotto è associato alla tabella food
-        if ($product->type === 'food' && $product->food) {
+        if ($product->category->type === 'food' && $product->food) {
             // aggiungiamo se piccante
             $filtered['is_spicy'] = $product->food->is_spicy;
             // aggiungiamo se vegetariano
@@ -112,7 +112,7 @@ class ProductsController extends Controller
         }
 
         // se il prodotto e una bevanda e e il prodotto è associato alla tabella bevande
-        if ($product->type === 'drink' && $product->beverage) {
+        if ($product->category->type === 'drink' && $product->beverage) {
             // aggiungiamo se è alcolico
             $filtered['is_alcholic'] = $product->beverage->is_alcholic;
             // aggiungiamo la percentuale alcolica
