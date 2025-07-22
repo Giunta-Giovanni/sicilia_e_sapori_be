@@ -25,19 +25,17 @@
     {{-- metodo Laravel per indicare una richiesta PUT di modifica --}}
     @method('PUT')
     
-
-
-    {{-- @dd($product->type) --}}
+    {{-- @dd($product->category->type) --}}
 
     {{-- type --}}
-    <input type="hidden" name="type" value="{{ $product->type }}">
+    <input type="hidden" name="type" value="{{ $product->category->type }}">
 
 
     {{-- category --}}
     <div class="mb-3">
         <label for="category" class="form-label">Categoria*</label>
         <select name="category_id" id="category" class="form-select"required>
-            @if($product->type === 'food')
+            @if($product->category->type === 'food')
                 @foreach ($foodCategories as $category)
                     <option value="{{ $category->id }}" 
                         {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
@@ -52,6 +50,15 @@
                     </option>
                 @endforeach
             @endif
+        </select>
+    </div>
+          {{-- availability --}}
+    <div class="mb-3">
+        <label for="availability" class="form-label">Tipo di Disponibilità*</label>
+        <select name="availability" id="availability" class="form-select"required>
+            <option value='both' {{ old('availability'), $product->availability == 'both'?'selected':''}}>both</option>
+            <option value='dinein' {{ old('availability'), $product->availability == 'dinein'?'selected':''}}>dinein</option>
+            <option value='takeaway' {{ old('availability'), $product->availability == 'takeaway'?'selected':''}}>takeaway</option>
         </select>
     </div>
 
@@ -149,7 +156,7 @@
     <hr>
 
     {{-- food specific fields --}}
-    @if ($product->type === 'food')
+    @if ($product->category->type === 'food')
         <div class="mb-3 row justify-content-center text-center">
             {{-- is spicy? --}}
             <div class="col-sm-6 col-md-2 my-2">

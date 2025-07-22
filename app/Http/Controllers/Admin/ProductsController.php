@@ -65,6 +65,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         //salvataggio dei dati
+        // dd($request);
         $data = $request->all();
 
         // validazione dei dati
@@ -72,6 +73,7 @@ class ProductsController extends Controller
             [
                 'type' => 'required|in:food,drink',
                 // campi comuni
+                'availability' => 'required|in:takeaway,dinein,both',
                 'category_id' => 'required|exists:categories,id',
                 'name_it' => 'required|string|max:50',
                 'name_eng' => 'nullable|string|max:50',
@@ -134,7 +136,7 @@ class ProductsController extends Controller
         //creiamo un nuovo prodotto
         $newProduct = new Product();
 
-        $newProduct->type = $validated['type'];
+        $newProduct->availability = $validated['availability'];
         $newProduct->category_id = $validated['category_id'];
         $newProduct->name_it = $validated['name_it'];
         $newProduct->name_eng = $validated['name_eng'];
@@ -219,6 +221,7 @@ class ProductsController extends Controller
             [
                 'type' => 'required|in:food,drink',
                 // campi comuni
+                'availability' => 'required|in:takeaway,dinein,both',
                 'category_id' => 'required|exists:categories,id',
                 'name_it' => 'required|string|max:50',
                 'name_eng' => 'nullable|string|max:50',
@@ -277,7 +280,7 @@ class ProductsController extends Controller
 
         // dd($validated);
 
-        $product->type = $validated['type'];
+        $product->availability = $validated['availability'];
         $product->category_id = $validated['category_id'];
         $product->name_it = $validated['name_it'];
         $product->name_eng = $validated['name_eng'];
