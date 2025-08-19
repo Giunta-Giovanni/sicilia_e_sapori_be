@@ -6,6 +6,7 @@
 
 {{-- body --}}
 @section('content')
+
 <div class="container my-5">
 
     <div class="text-center d-sm-flex justify-content-between align-items-center mb-3 ">

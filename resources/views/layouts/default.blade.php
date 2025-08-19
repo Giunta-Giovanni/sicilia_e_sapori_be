@@ -14,7 +14,7 @@
     {{-- titolo fisso con sottotitolo dinamico --}}
     <title>Sicilia e sapori: @yield('title')</title>
     {{-- file css e js di vite --}}
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/js/app.js'])
 </head>
 <body>
     <header>
