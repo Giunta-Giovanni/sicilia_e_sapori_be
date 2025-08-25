@@ -15,7 +15,7 @@ Backend dell’applicazione Sicilia e Sapori, sviluppato in Laravel 12.16. Forni
 
 ---
 
-# API principali [Vai alle api](/routes/api.php)
+# [API principali](/routes/api.php)
 
 -   GET /api/products → restituisce tutti i prodotti con output ottimizzato
 -   GET /api/products?category=num → restituisce tutti i prodotti di una singola categoria
