@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Sicilia e Sapori',
             'email' => 'info.siciliaesapori@gmail.com',
-            'password' => Hash::make('password'), // non in chiaro
+            'password' => Hash::make(env('USER_PASSWORD')), // non in chiaro
         ]);
     }
 }
