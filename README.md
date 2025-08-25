@@ -1,61 +1,76 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sicilia e Sapori - Backend
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Backend dell’applicazione Sicilia e Sapori, sviluppato in Laravel 12.16. Fornisce API REST per la gestione del menu, delle categorie, degli allergeni e supporta un backoffice amministrativo per la gestione completa dei prodotti.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Tecnologie utilizzate
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   PHP 8.2.28 con Laravel 12.16
+-   PhpMyAdmin come database relazionale
+-   Laravel Breeze per autenticazione (utente) e verifica (email) (creazione di nuovi utenti disabilitata appositamente)
+-   Blade per le view del backoffice
+-   Vite per la gestione degli asset lato front del backoffice
+-   Middleware per sicurezza, validazione e CORS
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+# API principali
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   GET /api/products → restituisce tutti i prodotti con output ottimizzato
+-   GET /api/products?category=num → restituisce tutti i prodotti di una singola categoria
+-   GET /api/db_products → restituisce tutti i prodotti con output grezzo
+-   GET /api/products/{id} → restituisce un singolo prodotto
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Nota: le API disponibili sono solo **GET**; tutte le altre operazioni **REST** vengono gestite direttamente tramite il backoffice.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Le API sono protette con CORS e accettano richieste solo da origini autorizzate.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# Sicurezza
 
-### Premium Partners
+-   Protezione CSRF nei form di creazione e modifica dei prodotti
+-   Middleware per validazioni e gestione errori centralizzata
+-   Modelli protetti tramite fillable
+-   Autenticazione con email e password, con verifica dell’email tramite messaggio di conferma
+-   Creazione di nuovi utenti disabilitata appositamente
+-   Filtraggio dei dati nelle API tramite metodo privato filter
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+# Backoffice
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   Layout separati per utenti loggati e non loggati (default e app)
+-   Dashboard amministrativa accessibile solo dopo login
+-   Tre pagine principali:
+    -   Prodotti → gestione completa con CRUD
+    -   Allergeni → gestione minima
+    -   Categorie → gestione minima
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# CRUD dei prodotti:
 
-## Security Vulnerabilities
+-   Index: mostra tutti i prodotti con nome categoria e altre informazioni, pulsante per vedere i dettagli, colore in base alla categoria, selettore per filtrare per categoria e pulsanti per scegliere il tipo di prodotto da aggiungere
+-   Show: mostra il singolo prodotto con informazioni condizionali in base al tipo (cibo o bevanda), con pulsanti per tornare indietro, modificare o eliminare
+-   Create: form con metodo POST e protezione CSRF; i dati vengono validati e in caso di errori si ritorna alla pagina con valori precedenti e messaggi custom
+-   Edit: simile a create, ma con metodo PUT per indicare a Laravel che si tratta di un aggiornamento, valori base del prodotto già caricati nel form
+-   Delete: eliminazione tramite modal di conferma con messaggio di successo
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+# Database
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   Tabelle principali: products, categories, foods, beverages, allergens, users
+-   Relazioni corrette tra prodotti, categorie, allergeni, cibi e bevande
+    -   Categorie prodotti (one to many)
+    -   Prodotti cibi(one to one)
+    -   Prodotti bevande(one to one)
+    -   Prodotti allergeni (many to many)
+-   Seeder per popolare dati di test (tramite [config.data])
+-   Migrazioni per uno schema sicuro con foreign key e constraints
+
+---
+
+[config.data]: /config/data/
